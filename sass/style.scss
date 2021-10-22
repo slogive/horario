@@ -1,0 +1,162 @@
+@import "normalize";
+
+$gap: 10px;
+$color0: #FFFFFF;
+$color1: #E52B50;
+
+body {
+    font-family: Lemonada;
+    //background-color: #5581ff;
+    background-color: #DCD0FF;
+}
+
+body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+@font-face {
+    font-family: "Lemonada";
+    src: url(../fonts/Lemonada.ttf);
+}
+
+div.indexMenu {
+    display: grid;
+    margin: $gap;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: $gap;
+    column-gap: $gap;
+    button {
+        outline: none;
+        border: dashed 0.1px black;
+        background-color: $color0;
+        padding: $gap;
+    }
+    button:hover {
+        cursor: pointer;
+        background-color: $color1;
+        animation: buttonAnimation .5s both;
+        -webkit-animation: buttonAnimation .5s both;
+        @keyframes buttonAnimation {
+            0% {background-color: $color0; border-radius: 0px;}
+            100% {background-color: $color1;  border-radius: $gap;}
+        }
+        @-webkit-keyframes buttonAnimation {
+            0% {background-color: $color0; border-radius: 0px;}
+            100% {background-color: $color1;  border-radius: $gap;}
+        }
+    }
+}
+
+div.Scheduler {
+    overflow: auto;
+    box-sizing: border-box;
+    margin: $gap;
+    background: url(../img/background.png) no-repeat center center; 
+    background-size: cover;
+
+    div.Horario {
+        display: grid;
+        grid-template-columns: repeat(7, auto);
+        grid-template-rows: repeat(13, 1fr);
+        box-sizing: border-box;
+        text-align: center;
+        column-gap: $gap;
+        row-gap: $gap;
+
+        div.item {
+            display: grid;
+            text-align: center;
+            //border: dashed 0.1px black;
+            background: rgba($color: #ffffff, $alpha: .1);
+            box-sizing: border-box;
+            justify-content: center;
+            align-content: center;
+            // -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+            // -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+            // box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+            -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+        }
+
+        div.activeItem {
+            padding: 20px;
+            box-sizing: border-box;
+            justify-content: center;
+            align-content: center;
+            .title {
+                font-size: calc(1em * 1.25);
+            }
+        }
+
+        div.activeItem:hover {
+            cursor: pointer;
+            animation: activeItemAnimation .5s both;
+            -webkit-animation: activeItemAnimation .5s both;
+            @keyframes activeItemAnimation {
+                0% {background-color: $color0; border-radius: 0px;}
+                100% {background-color: $color1;  border-radius: $gap;}
+            }
+            @-webkit-keyframes activeItemAnimation {
+                0% {background-color: $color0; border-radius: 0px;}
+                100% {background-color: $color1;  border-radius: $gap;}
+            }
+        }
+
+        .em {
+            font-weight: bold;
+            font-size: calc(1em * 1.5);
+        }
+
+        div.horas {
+            grid-column: 1;
+            white-space: nowrap;
+            padding: calc(#{$gap} / 2) calc(#{$gap} * 2);
+        }
+    }
+    div.HorarioBotton {
+        display: grid;
+        //border: solid thin black;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(13, 1fr);
+        box-sizing: border-box;
+        text-align: center;
+        height: 100%;
+        row-gap: $gap;
+
+        // div.rowcolor0 {
+        //     // background-color: rgba(92, 176, 255, 0.75);
+        // }
+
+        // div.rowcolor1 {
+        //     // background-color: rgb(255, 255, 255, .75);
+        // }
+
+        div.item {
+            display: grid;
+            text-align: center;
+            box-sizing: border-box;
+            justify-content: center;
+            align-content: center;
+            padding: 5px 10px;
+        }
+        div.horas {
+            grid-column: 1;
+            white-space: nowrap;
+        }
+    }
+}
